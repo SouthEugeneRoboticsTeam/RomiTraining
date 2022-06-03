@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase
 import org.sert2521.COUNTS_PER_REVOLUTION
 import org.sert2521.WHEEL_DIAMETER
 
-object RomiDrivetrain : SubsystemBase() {
+object Drivetrain : SubsystemBase() {
     private val leftMotor = Spark(0)
     private val rightMotor = Spark(1)
 
@@ -35,10 +35,7 @@ object RomiDrivetrain : SubsystemBase() {
 
     fun arcadeDrive(xAxisSpeed: Double, zAxisRotate: Double) = diffDrive.arcadeDrive(xAxisSpeed, zAxisRotate)
 
-    fun setWheelSpeeds(left: Double, right: Double) {
-        leftMotor.set(left)
-        rightMotor.set(right)
-    }
+    fun setWheelSpeeds(left: Double, right: Double) = diffDrive.tankDrive(left, right)
 
     private fun resetEncoders() {
         leftEncoder.reset()
